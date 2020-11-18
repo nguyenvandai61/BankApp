@@ -34,12 +34,19 @@ public class MainView {
 	public MainView() {
 		// TODO Auto-generated constructor stub
 		initLoginGUI();
+		connectServer();
 	}
-
+	
+	private void connectServer() {
+		// TODO Auto-generated method stub
+		BankClient client = new BankClient("localhost", 3000);
+		if (!client.connectServer()) {
+			System.out.println("Unable connect to server!");
+		}
+		System.out.println("Success in connecting to server!");
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		MainView mainView = new MainView();
-		
 	}
-
 }
