@@ -62,15 +62,15 @@ public class MsgHead {
 	}
 	public void send(OutputStream outputStream) throws IOException {
 		byte[] message = this.packMessage();
+		
 		outputStream.write(message);
+		System.out.println("Da gui tin nhan di");
 		outputStream.flush();
 	}
 
 	protected void packMessageHead(DataOutputStream dous) throws IOException {
 		dous.writeInt(getTotalLen());
 		dous.writeByte(getType());
-		dous.writeInt(getDest());
-		dous.writeInt(getSrc());
 	}
 	protected void writeString(DataOutputStream dous, int len, String s) throws IOException {
 		byte[] data = s.getBytes();

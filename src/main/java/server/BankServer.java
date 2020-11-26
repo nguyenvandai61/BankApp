@@ -1,4 +1,4 @@
-package com.github.nguyenvandai61.server;
+package server;
 
 import java.io.IOException;
 import java.net.ServerSocket;

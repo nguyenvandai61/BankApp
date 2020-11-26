@@ -18,6 +18,9 @@ public class ParseTool {
 	public static MsgHead parseMsg(byte[] data) throws IOException {
 		int totalLen = data.length + 4; // 之前已经读取了4个字节的长度信息
 		System.out.println("totalLen"+totalLen);
+		for (int i = 0; i <data.length; i++) {
+			System.out.println(data[i]+" ");
+		}
 		ByteArrayInputStream bins = new ByteArrayInputStream(data);
 		DataInputStream dis = new DataInputStream(bins);
 		byte msgtype = dis.readByte();
@@ -26,7 +29,7 @@ public class ParseTool {
 		System.out.println(msgtype);
 
 		if (msgtype == 0x02) {
-			String username = readString(dis, 11);
+			String username = readString(dis, 10);
 			String password = readString(dis, 10);
 			System.out.println(username);
 			System.out.println(password);

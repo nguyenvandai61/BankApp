@@ -40,7 +40,7 @@ public class PackageTool {
 	private static void writeHead(DataOutputStream dos, MsgHead msg) throws IOException {
 		dos.writeInt(msg.getTotalLen());
 		dos.writeByte(msg.getType());
-		dos.writeInt(msg.getDest());
-		dos.writeInt(msg.getSrc());
+//		dos.writeInt(msg.getDest());
+//		dos.writeInt(msg.getSrc());
 	}
 }

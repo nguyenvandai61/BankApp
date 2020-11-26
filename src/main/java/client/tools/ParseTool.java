@@ -5,6 +5,7 @@ import java.io.DataInputStream;
 import java.io.IOException;
 
 import client.msg.MsgHead;
+import client.msg.MsgLoginResp;
 
 public class ParseTool {
 
@@ -21,11 +22,20 @@ public class ParseTool {
 		int totalLen = data.length + 4;
 		ByteArrayInputStream bais = new ByteArrayInputStream(data);
 		DataInputStream dis = new DataInputStream(bais);
+		for (int i = 0; i <data.length; i++) {
+			System.out.println(data[i]+" ");
+		}
 		byte msgType = dis.readByte();
-		int dest = dis.readInt();
-		int src = dis.readInt();
 		
-		
-		return null;
+//		int dest = dis.readInt();
+//		int src = dis.readInt();
+		System.out.println("MsgType"+msgType);
+		byte state = dis.readByte();
+		MsgLoginResp mlr = new MsgLoginResp();
+
+		System.out.println("MsgState"+state);
+		mlr.setState(state);
+		mlr.setType(msgType);
+		return mlr;
 	}
 }
