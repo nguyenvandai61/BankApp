@@ -5,12 +5,14 @@ public class User extends Entity{
     private String username;
     private String password;
     private String role;
+    private Long balance;
 
-    public User(Long id, String username, String password, String role) {
+    public User(Long id, String username, String password, String role, Long balance) {
         this.setId(id);
         this.username = username;
         this.password = password;
         this.role = role;
+        this.setBalance(balance);
     }
 
     public String getName() {
@@ -44,4 +46,12 @@ public class User extends Entity{
     public void setRole(String role) {
         this.role = role;
     }
+
+	public Long getBalance() {
+		return balance;
+	}
+
+	public void setBalance(Long balance) {
+		this.balance = balance;
+	}
 }

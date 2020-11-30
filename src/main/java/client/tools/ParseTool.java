@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
 
+import client.msg.MsgGetBalanceResp;
 import client.msg.MsgHead;
 import client.msg.MsgLoginResp;
 
@@ -30,12 +31,41 @@ public class ParseTool {
 //		int dest = dis.readInt();
 //		int src = dis.readInt();
 		System.out.println("MsgType"+msgType);
-		byte state = dis.readByte();
-		MsgLoginResp mlr = new MsgLoginResp();
-
-		System.out.println("MsgState"+state);
-		mlr.setState(state);
-		mlr.setType(msgType);
-		return mlr;
+		if (msgType == 0x22) {			
+			MsgLoginResp mlr = new MsgLoginResp();
+			mlr.setType(msgType);
+			byte state = dis.readByte();
+			mlr.setState(state);
+			return mlr;
+		} else if (msgType == 0x30){
+			MsgGetBalanceResp mgbr = new MsgGetBalanceResp();
+			Long balance = dis.readLong();
+			System.out.println("balance -> client: "+ balance);
+			mgbr.setBalance(balance);
+			mgbr.setType(msgType);
+			return mgbr;
+		} else if (msgType == 0x40){
+			MsgGetBalanceResp mgbr = new MsgGetBalanceResp();
+			byte state = mgbr.getState();
+			System.out.println("is Success: "+ state);
+			mgbr.setState(state);;
+			mgbr.setType(msgType);
+			return mgbr;
+		} else if (msgType == 0x50){
+			MsgGetBalanceResp mgbr = new MsgGetBalanceResp();
+			byte state = mgbr.getState();
+			System.out.println("is Success: "+ state);
+			mgbr.setState(state);;
+			mgbr.setType(msgType);
+			return mgbr;
+		} else if (msgType == 0x60){
+			MsgGetBalanceResp mgbr = new MsgGetBalanceResp();
+			byte state = mgbr.getState();
+			System.out.println("is Success: "+ state);
+			mgbr.setState(state);;
+			mgbr.setType(msgType);
+			return mgbr;
+		}
+		return null;
 	}
 }

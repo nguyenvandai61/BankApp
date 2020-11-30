@@ -9,4 +9,6 @@ public interface IUserRepository {
     List<User> search(String term);
     User findUsernameAndPassword(String username, String password);
     User findByUsername(String username);
+    
+    boolean increaseAmount2Balance(String username, Long amount);
 }

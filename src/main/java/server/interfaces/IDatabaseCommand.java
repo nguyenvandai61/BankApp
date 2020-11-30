@@ -15,11 +15,11 @@ public interface IDatabaseCommand<T> {
 
     T get(Long id);
 
-    void add(T t);
+    boolean add(T t);
 
-    void update(T t);
+    boolean update(T t);
 
-    void delete(long id);
+    boolean delete(long id);
 
     ArrayList<String> getAllName();
 

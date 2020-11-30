@@ -80,7 +80,7 @@ public class MainView {
 			} else {
 				mainFrame.setVisible(false);
                 mainFrame.dispose();
-				new OperationView();
+				new OperationView(bankClient);
 			}
 		}
 

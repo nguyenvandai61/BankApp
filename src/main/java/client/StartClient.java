@@ -16,6 +16,12 @@ public class StartClient {
 		StartClient startClient = new StartClient();
 		// TODO Auto-generated method stub
 		startClient.connectServer();
+		String username = "daica";
+		Long amount = 500000l;
+//		startClient.bankClient.depositFund(username, amount);
+//		startClient.bankClient.getBalance(username);
+//		startClient.bankClient.withdrawCash(username, amount);
+//		startClient.bankClient.transferMoney("Dai", "daica", amount);
 		MainView mainView = new MainView(startClient.bankClient);
 	}
 

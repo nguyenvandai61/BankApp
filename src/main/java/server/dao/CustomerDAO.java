@@ -88,7 +88,7 @@ public class CustomerDAO implements IDatabaseCommand<Customer> {
     }
 
     @Override
-    public void add(Customer customer) {
+    public boolean add(Customer customer) {
         try {
             System.out.println(INSERT_CMD);
             preparedStatement = connection.prepareStatement(INSERT_CMD);
@@ -100,14 +100,16 @@ public class CustomerDAO implements IDatabaseCommand<Customer> {
             preparedStatement.setString(6, customer.getSignature());
             preparedStatement.executeUpdate();
             System.out.println("Success add");
+            return true;
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
         }
+        return false;
     }
 
     @Override
-    public void update(Customer customer) {
+    public boolean update(Customer customer) {
         try {
             preparedStatement = connection.prepareStatement(UPDATE_CMD);
             preparedStatement.setLong(1, customer.getId());
@@ -119,10 +121,12 @@ public class CustomerDAO implements IDatabaseCommand<Customer> {
             preparedStatement.setLong(7, customer.getId());
             preparedStatement.executeUpdate();
             System.out.println("Success updating");
+            return true;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } finally {
         }
+        return false;
     }
 
 
@@ -157,16 +161,18 @@ public class CustomerDAO implements IDatabaseCommand<Customer> {
     }
 
 	@Override
-	public void delete(long id) {
+	public boolean delete(long id) {
 		// TODO Auto-generated method stub
 		try {
             preparedStatement = connection.prepareStatement(DELETE_CMD);
             preparedStatement.setLong(1, id);
             preparedStatement.executeUpdate();
             System.out.println("Success Delete");
-        } catch (SQLException throwables) {
+            return true;
+		} catch (SQLException throwables) {
             throwables.printStackTrace();
         } finally {
         }
+		return false;
 	}
 }
